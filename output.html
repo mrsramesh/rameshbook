@@ -244,7 +244,7 @@
             right: 10px;
         }
 
-        .btn {
+        .btn , #navigateButton ,#genatedata {
             display: block;
             width: 120px;
             margin: 0 auto;
@@ -383,12 +383,16 @@ h3{
         </table>
         <a href="#" id="downloadButton" class="btn">Download CSV</a>
         
-    <button onclick="generateData()">Generate Data for Today</button>
-    <button onclick="downloadCSV()">Download CSV</button>
-
+    <button onclick="generateData()" id="genatedata" style="margin-right: 80%;">SAVE DATA</button>
+    <!-- <button onclick="downloadCSV() ">Download CSV</button> -->
+    <button id="navigateButton"  style="margin-left: 70%;"> show parch</button>
     </div>
 
     <script>
+    document.getElementById("navigateButton").addEventListener("click", function() {
+  // Redirect to newfile.html
+    window.location.href = "newfile.html"; });
+
      // Retrieve inputs from local storage
      var a = localStorage.getItem('input1') || '0';
         var b = localStorage.getItem('input2') || '0';
@@ -410,7 +414,7 @@ h3{
         document.getElementById('output4').value = parseFloat(a) + parseFloat(b) * 45 - parseFloat(e);
         document.getElementById('output5').value = parseFloat(e);
         document.getElementById('output6').value = parseFloat(e) * 70;
-        document.getElementById('output7').value = parseFloat(h) - parseFloat(totalsale)*70 ;
+        document.getElementById('output7').value = parseFloat(h) - parseFloat(totalsale)*70 + 17000 ;
        // document.getElementById('output8').value = parseFloat(h) - (parseFloat(e) * 70) -
         document.getElementById('expance').value = parseFloat(i);
         // document.getElementById('description').value = parseFloat(i);
