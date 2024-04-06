@@ -1,1 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://source.unsplash.com/1920x1080/?nature');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            height: 100vh;
+            overflow: hidden;
+            perspective: 1000px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            transform: rotateX(20deg);
+            animation: rotateContainer 5s infinite alternate;
+        }
+
+        @keyframes rotateContainer {
+            from {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+            to {
+                transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg);
+            }
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        label {
+            font-weight: bold;
+            color: #555;
+        }
+
+        input[type="number"] {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+       #input3,#input4 {
+            width: calc(35% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            border-radius: 8px;
+            box-sizing: border-box;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        input[type="number"]:focus {
+            outline: none;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .optional-fields {
+            display: none;
+        }
+
+        input[type="checkbox"] {
+            margin-right: 5px;
+            transform: translateY(5px);
+        }
+        
+        input[type="submit"] {
+            width: calc(100% - 20px);
+            margin-top: 50px;
+            padding: 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        input[type="submit"]:hover {
+         
+            background-color: #45a049;
+        }
+
+        #showOptionalFields {
+            margin-bottom: 10px;
+            transform: translateY(5px);
+        }
+
+        .optional-fields label {
+            color: #777;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>आज के माल को दर्ज करे</h1>
+        <form id="inputForm">
+            <label for="input1">पिछला बाकी:</label>
+            <input type="number" id="input1" name="input1">
+
+            <label for="input3">कितनी पेटी है:</label><br>
+            <input type="number" id="input3" name="input1">
+
+          <sup>  <label for="input4">कितने पउआ है:</label></sup>
+            <input type="number" id="input4" name="input5"><br>
+
+            <label for="input5">कितनी बिक्री करनी है:</label>
+            <input type="number" id="input5" name="input5">
+            
+            <label for="input7">कितना पैसा है:</label>
+            <input type="number" id="input7" name="input7">
+            
+            <input type="checkbox" id="showOptionalFields">
+            <label for="showOptionalFields">माल / खर्च के विवरड के लिए बॉक्स को दबाया</label>
+            
+            <div class="optional-fields">
+                <label for="input2" id="label2" style="display: none;">कितनी पेटी आई है:</label>
+                <input type="number" id="input2" name="input2" style="display: none;">
+                
+                <label for="input8" id="label8" style="display: none;">कितना खर्चा  है:</label>
+                <input type="number" id="input8" name="input8" style="display: none;">
+            </div>
+          
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('inputForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const input1 = document.getElementById('input1').value;
+            const input2 = document.getElementById('input2').value;
+            const input3 = document.getElementById('input3').value;
+            const input4 = document.getElementById('input4').value;
+            const input5 = document.getElementById('input5').value;
+            const input7 = document.getElementById('input7').value;
+            const input8 = document.getElementById('input8').value;
+
+            // Set default value of empty fields to 0
+            var inputs = document.querySelectorAll('input[type="number"]');
+            inputs.forEach(function(input) {
+                if (input.value === '') {
+                    input.value = '0';
+                }
+            });
+
+            // Check if the optional fields are visible and set to 0 if not filled
+            if (!document.getElementById('showOptionalFields').checked) {
+                if (input2 === '') {
+                    input2 = '0';
+                }
+                if (input8 === '') {
+                    input8 = '0';
+                }
+            }
+
+            // Save inputs to local storage
+            localStorage.setItem('input1', input1);
+            localStorage.setItem('input2', input2);
+            localStorage.setItem('input3', input3);
+            localStorage.setItem('input4', input4);
+            localStorage.setItem('input5', input5);
+            localStorage.setItem('input7', input7);
+            localStorage.setItem('input8', input8);
+
+            // Redirect to output page
+            window.location.href = 'output.html';
+           
+        
+        });
+
+        document.getElementById('showOptionalFields').addEventListener('change', function() {
+            const optionalFields = document.querySelector('.optional-fields');
+            optionalFields.style.display = this.checked ? 'block' : 'none';
+            document.getElementById('label2').style.display = this.checked ? 'block' : 'none';
+            document.getElementById('label8').style.display = this.checked ? 'block' : 'none';
+            document.getElementById('input2').style.display = this.checked ? 'block' : 'none';
+            document.getElementById('input8').style.display = this.checked ? 'block' : 'none';
+        });
+    </script>
+</body>
+</html>
 
