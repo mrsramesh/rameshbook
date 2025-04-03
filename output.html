@@ -132,9 +132,9 @@
         document.getElementById('output3').value = a + b;
         document.getElementById('output4').value = a+b-e;
         document.getElementById('output5').value =  e;
-        document.getElementById('output6').value = e * 70;
-        document.getElementById('output7').value = h-(e*70);
-        document.getElementById('output8').value = (h-(e*70)-i);
+        document.getElementById('output6').value = e * 75;
+        document.getElementById('output7').value = h-(e*75);
+        document.getElementById('output8').value = (h-(e*75)-i);
 
         // Set the date input tag to the current date
         var today = new Date().toISOString().split('T')[0];
@@ -414,12 +414,12 @@ h3{
         document.getElementById('output3').value = parseFloat(a) + parseFloat(b) * 45;
         document.getElementById('output4').value = parseFloat(a) + parseFloat(b) * 45 - parseFloat(e);
         document.getElementById('output5').value = parseFloat(e);
-        document.getElementById('output6').value = parseFloat(e) * 70;
-        document.getElementById('output7').value = parseFloat(h) - parseFloat(totalsale)*70 + 17000 ;
-       // document.getElementById('output8').value = parseFloat(h) - (parseFloat(e) * 70) -
+        document.getElementById('output6').value = parseFloat(e) * 75;
+        document.getElementById('output7').value = parseFloat(h) - parseFloat(totalsale)*75 ;
+       // document.getElementById('output8').value = parseFloat(h) - (parseFloat(e) * 75) -
         document.getElementById('expance').value = parseFloat(i);
         // document.getElementById('description').value = parseFloat(i);
-        document.getElementById('payble').value =  parseFloat(e) * 70 - parseFloat(i);
+        document.getElementById('payble').value =  parseFloat(e) * 75 - parseFloat(i);
 
 
         
@@ -455,7 +455,7 @@ h3{
 
             var data = [
                 ['Old Mal', 'Entry', 'Total', 'Remain', 'Bikri', 'DAR', 'Kimat', 'Payble Amount', 'Expense', 'Description', 'Profit', 'Online Money'],
-                [a, b, parseFloat(a) + parseFloat(b), parseFloat(a) + parseFloat(b) - parseFloat(e), e, 70, parseFloat(e) * 70, parseFloat(e) * 70 - parseFloat(i), parseFloat(i), '', parseFloat(h) - (parseFloat(e) * 70), parseFloat(h) - (parseFloat(e) * 70) - parseFloat(i)]
+                [a, b, parseFloat(a) + parseFloat(b), parseFloat(a) + parseFloat(b) - parseFloat(e), e, 75, parseFloat(e) * 75, parseFloat(e) * 75 - parseFloat(i), parseFloat(i), '', parseFloat(h) - (parseFloat(e) * 75), parseFloat(h) - (parseFloat(e) * 75) - parseFloat(i)]
             ];
 
             var csvContent = convertToCSV(data);
@@ -470,7 +470,7 @@ h3{
             const total = document.getElementById('output3').value;
             const remain = document.getElementById('output4').value;
             const bikri = document.getElementById('output5').value;
-            const dar = '70'; // Fixed value
+            const dar = '75'; // Fixed value
             const kimat = document.getElementById('output6').value;
             const paybleAmount = document.getElementById('payble').value;
             const expense = document.getElementById('expance').value;
